@@ -78,7 +78,7 @@ model Subscription {
   userId      String
   user        User      @relation(fields: [userId], references: [id])
   subredditId String
-  subreddit   Subreddit @relation(fields: [subredditId], references: [id])
+  subreddit   Subreddit @relation(fields: [subredditId], references: [id], onDelete: Cascade)
 
   @@id([userId, subredditId])
   @@map("subscriptions")
