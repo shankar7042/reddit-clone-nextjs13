@@ -6,7 +6,9 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      <h1 className="font-bold text-3xl md:text-4xl">Your Feed</h1>
+      <h1 className="font-bold text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-violet-500">
+        Your Feed
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-y-4 md:gap-x-4 py-6">
         {/* feed */}
 
@@ -20,7 +22,7 @@ export default function Home() {
           </div>
           <div className="-my-3 divide-y divide-gray-100 px-6 py-4 text-sm leading-6">
             <div className="flex justify-between gap-x-4 py-3">
-              <p className="text-zinc-500 ">
+              <p className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-violet-500">
                 Your personal reddit homepage. Come here to check in with your
                 favorite communities.
               </p>
