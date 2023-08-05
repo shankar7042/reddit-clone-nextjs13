@@ -23,10 +23,6 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
 
   const { data: session } = useSession();
 
-  // useEffect(() => {
-  //     if()
-  // }, [entry])
-
   const { data, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
     ["infinite-query-post"],
     async ({ pageParam = 1 }) => {
@@ -47,6 +43,12 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
       },
     }
   );
+
+  useEffect(() => {
+    if (entry?.isIntersecting) {
+      fetchNextPage();
+    }
+  }, [entry, fetchNextPage]);
 
   const posts = data?.pages.flatMap((page) => page) ?? initialPosts;
 
