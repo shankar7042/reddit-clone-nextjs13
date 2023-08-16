@@ -1,10 +1,9 @@
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { SubredditValidator } from "@/lib/validators/subreddit";
-import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
     const session = await getAuthSession();
 
@@ -32,7 +31,7 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    const subscribeToSubreddit = await db.subscription.create({
+    await db.subscription.create({
       data: {
         userId: session.user.id,
         subredditId: subreddit.id,
