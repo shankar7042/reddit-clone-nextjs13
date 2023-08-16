@@ -101,17 +101,17 @@ model Post {
 }
 
 model Comment {
-  id          String        @id @default(cuid())
-  text        String
-  createdAt   DateTime      @default(now())
-  authorId    String
-  author      User          @relation(fields: [authorId], references: [id])
-  postId      String
-  post        Post          @relation(fields: [postId], references: [id], onDelete: Cascade)
-  replyToId   String?
-  replyTo     Comment?      @relation("ReplyTo", fields: [replyToId], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  replies     Comment[]     @relation("ReplyTo")
-  CommentVote CommentVote[]
+  id        String        @id @default(cuid())
+  text      String
+  createdAt DateTime      @default(now())
+  authorId  String
+  author    User          @relation(fields: [authorId], references: [id])
+  postId    String
+  post      Post          @relation(fields: [postId], references: [id], onDelete: Cascade)
+  replyToId String?
+  replyTo   Comment?      @relation("ReplyTo", fields: [replyToId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  replies   Comment[]     @relation("ReplyTo")
+  votes     CommentVote[]
 
   @@map("comments")
 }
